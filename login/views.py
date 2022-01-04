@@ -2,19 +2,19 @@ import pyrebase
 from django.shortcuts import render
 
 Config = {
-  'apiKey': "AIzaSyDue501VYxKJ4DG8S6gSnre9UqI6dpBdMY",
-  'authDomain': "ventas-sidecom.firebaseapp.com",
-    ''
-  'projectId': "ventas-sidecom",
-  'storageBucket': "ventas-sidecom.appspot.com",
-  'messagingSenderId': "394339999365",
-  'appId': "1:394339999365:web:5b9d22c89c4a0a19f993ec"
+    'apiKey': "AIzaSyDue501VYxKJ4DG8S6gSnre9UqI6dpBdMY",
+    'authDomain': "ventas-sidecom.firebaseapp.com",
+    'databaseURL': "https://ventas-sidecom-default-rtdb.firebaseio.com/",
+    'projectId': "ventas-sidecom",
+    'storageBucket': "ventas-sidecom.appspot.com",
+    'messagingSenderId': "394339999365",
+    'appId': "1:394339999365:web:5b9d22c89c4a0a19f993ec"
 }
 
 default_app = pyrebase.initialize_app(Config)
 
 authe = default_app.auth()
-
+databse = default_app.database()
 
 
 def signin(request):
@@ -29,7 +29,6 @@ def postsign(request):
     try:
         user = authe.sign_in_with_email_and_password(email, passw)
         return render(request, 'welcome.html')
-
     except:
         return render(request, 'signIn.html')
 
@@ -43,7 +42,6 @@ def logout(request):
 
 
 def signUp(request):
-
     return render(request, 'signup.html')
 
 
