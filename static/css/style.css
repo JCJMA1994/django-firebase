@@ -68,6 +68,7 @@ p.w3l-register-p {
     font-style: italic;
 }
 
+input[type="name"],
 input[type="email"],
 input[type="password"] {
     width: 100%;
@@ -77,6 +78,7 @@ input[type="password"] {
     color: #000;
 }
 
+input[type="name"]:focus,
 input[type="email"]:focus,
 input[type="password"]:focus {
     outline: none;

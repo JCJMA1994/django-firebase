@@ -1,24 +1,60 @@
-{% if messg %}
-<script>
-    alert('{{ messg }}');
-</script>
+{% load static %}
+{% if messa %}
+    <script>
+        alert('{{ messa }}');
+    </script>
 {% endif %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Sign In</title>
+    <title>Register</title>
+    <!-- meta tags -->
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <!-- /meta tags -->
+    <!-- custom style sheet -->
+    <link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css"/>
+    <!-- /custom style sheet -->
+    <!-- fontawesome css -->
+    <link href="{% static 'css/fontawesome-all.css' %}" rel="stylesheet"/>
+    <!-- /fontawesome css -->
+    <!-- google fonts-->
+    <link href="//fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i"
+          rel="stylesheet">
+    <!-- /google fonts-->
+
 </head>
 <body>
-<form action="/postsignup/" method="post">
-    {% csrf_token %}
-    Name:
-    <input type="text" name="name"><br><br>
-    Email:
-    <input type="email" name="email"><br><br>
-    Password:
-    <input type="password" name="password"><br><br>
-    <input type="submit" value="SignUp">
-</form>
+<div class=" w3l-login-form">
+    <h2>Register</h2>
+    <form action="/postsignup/" method="post">
+        {% csrf_token %}
+        <div class=" w3l-form-group">
+            <label>Name:</label>
+            <div class="group">
+                <i class="fas fa-user"></i>
+                <input type="name" class="form-control" placeholder="Name" required="required" name="Name"/>
+            </div>
+        </div>
+        <div class=" w3l-form-group">
+            <label>Email:</label>
+            <div class="group">
+                <i class="fas fa-user"></i>
+                <input type="email" class="form-control" placeholder="Email" required="required" name="email"/>
+            </div>
+        </div>
+        <div class=" w3l-form-group">
+            <label>Password:</label>
+            <div class="group">
+                <i class="fas fa-unlock"></i>
+                <input type="password" class="form-control" placeholder="Password" required="required" name="password"/>
+            </div>
+        </div>
+        <button type="submit" value="Login">Login</button>
+    </form>
+</div>
+<footer>
+    <p class="copyright-agileinfo"> &copy; 2021 SIDECOM. All Rights Reserved |</p>
+</footer>
 </body>
 </html>
