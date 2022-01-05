@@ -17,6 +17,10 @@ authe = default_app.auth()
 databse = default_app.database()
 
 
+def home(request):
+    return render(request, template_name='welcome.html')
+
+
 def signin(request):
     return render(request, template_name="signIn.html")
 
