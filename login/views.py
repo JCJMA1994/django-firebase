@@ -62,4 +62,4 @@ def postSignUp(request):
     uid = user['localId']
     data = {"name": name, "status": "1"}
     databse.child("users").child(uid).child("details").set(data)
-    return render(request, "signIn.html")
+    return render(request, "welcome.html")
