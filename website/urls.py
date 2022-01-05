@@ -7,10 +7,10 @@ urlpatterns = [
 
     # url
     path('', views.home, name='home'),
-    path('signin/', views.signin, name='signin'),
-    path('signup/', views.signUp, name='signup'),
-    path('postsign/', views.postsign),
+    path('signin/', views.signIn, name='signIn'),
+    path('signup/', views.signUp, name='signUp'),
+    path('postsign/', views.postSignIn, name='postSignIn'),
     path('logout/', views.logout, name="logout"),
-    path('postsignup/', views.postsignup, name="postsignup"),
+    path('postsignup/', views.postSignUp, name="postSignUp"),
 
 ]

@@ -18,15 +18,14 @@ databse = default_app.database()
 
 
 def home(request):
-    return render(request, template_name='welcome.html')
+    return render(request, template_name='signIn.html')
 
 
-def signin(request):
+def signIn(request):
     return render(request, template_name="signIn.html")
 
 
-def postsign(request):
-    global authe
+def postSignIn(request):
     email = request.POST.get('email')
     passw = request.POST.get('password')
 
@@ -49,21 +48,18 @@ def signUp(request):
     return render(request, 'signup.html')
 
 
-def postsignup(request):
+def postSignUp(request):
     name = request.POST.get('name')
     email = request.POST.get('email')
     passw = request.POST.get('password')
 
-    global authe
-
-    print(authe.create_user_with_email_and_password(email, passw))
     try:
         user = authe.create_user_with_email_and_password(email, passw)
     except:
         message = "unable to create account try again"
         return render(request, 'signup.html', {"messg": message})
-    uid = user['localId']
 
+    uid = user['localId']
     data = {"name": name, "status": "1"}
     databse.child("users").child(uid).child("details").set(data)
     return render(request, "signIn.html")
