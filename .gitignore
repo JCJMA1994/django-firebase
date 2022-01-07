@@ -3,3 +3,12 @@
 /Lib/site-packages/
 /Scripts/
 /.idea/
+/database.rules.json
+/package-lock.json
+/package.json
+/firebase.json
+/.firebaserc
+/public/
+/node_modules/
+/.github/workflows/
+/.firebase/
