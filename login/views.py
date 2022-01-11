@@ -1,6 +1,10 @@
 import pyrebase
 from django.shortcuts import render
 
+"""
+Inicializacion de la configuracion del SDK de Firebase
+que contienen los identificadores y claves para la aplicacion
+"""
 Config = {
     'apiKey': "AIzaSyDue501VYxKJ4DG8S6gSnre9UqI6dpBdMY",
     'authDomain': "ventas-sidecom.firebaseapp.com",
@@ -11,8 +15,10 @@ Config = {
     'appId': "1:394339999365:web:5b9d22c89c4a0a19f993ec"
 }
 
+# Inicializacion de pyrebase para el uso de Firebase con Python
 default_app = pyrebase.initialize_app(Config)
 
+# Pase de la configuracion de credenciales para Authentication y Realtime Database
 authe = default_app.auth()
 databse = default_app.database()
 
@@ -26,6 +32,12 @@ def signIn(request):
 
 
 def postSignIn(request):
+    """
+    Recibimos los datos que vamos a mandar a Firebase Authentication,
+    Verificacion de los datos y creacion de usuario
+    :param request:
+    :return:
+    """
     email = request.POST.get('email')
     passw = request.POST.get('password')
 
@@ -37,6 +49,11 @@ def postSignIn(request):
 
 
 def logout(request):
+    """
+    Eliminamos la sesion creada
+    :param request:
+    :return:
+    """
     try:
         del request.session['uid']
     except KeyError:
@@ -49,6 +66,11 @@ def signUp(request):
 
 
 def postSignUp(request):
+    """
+    Enviamos los datos name y email al Realtime Database
+    :param request:
+    :return:
+    """
     name = request.POST.get('name')
     email = request.POST.get('email')
     passw = request.POST.get('password')
@@ -60,6 +82,6 @@ def postSignUp(request):
         return render(request, 'signup.html', {"messg": message})
 
     uid = user['localId']
-    data = {"name": name, "status": "1"}
+    data = {"name": name, "email": email, "status": "1"}
     databse.child("users").child(uid).child("details").set(data)
     return render(request, "welcome.html")
